@@ -1,7 +1,12 @@
 #include "color.hpp"
 
+#include <stdexcept>
+
 Color::Color(int r, int g, int b): red_(r), green_(g), blue_(b) {
-  // need to ensure valid color has been constructed...
+  const int kMax = 255;
+  if (r > kMax || r < 0 || g > kMax || g < 0 || b > kMax || b < 0) {
+    throw std::runtime_error("out of bounds color");
+  }
 }
 
 // do not modify
